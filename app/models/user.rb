@@ -32,7 +32,7 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
-  # Remembers a user in the database for use in persistent sessions.
+  # Remembers a user in the database
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
@@ -51,15 +51,15 @@ class User < ApplicationRecord
   end
 
   # Activates an account.
-  def activate
-    update_attribute(:activated,    true)
-    update_attribute(:activated_at, Time.zone.now)
-  end
+  # def activate
+  #   update_attribute(:activated,    true)
+  #   update_attribute(:activated_at, Time.zone.now)
+  # end
 
   # Sends activation email.
-  def send_activation_email
-    UserMailer.account_activation(self).deliver_now
-  end
+  # def send_activation_email
+  #   UserMailer.account_activation(self).deliver_now
+  # end
 
   # Sets the password reset attributes.
   def create_reset_digest

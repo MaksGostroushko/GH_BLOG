@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  def create #create new image and save to server(url)
+  def create #create new image a&& save url
     @picture = Picture.new(image_params)
     @picture.save
     respond_to do |format|

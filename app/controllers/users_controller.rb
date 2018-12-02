@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
+    #Returns a paginator and a collection of Active Record model instances for
+    #the paginator’s current page
   end
 
   def show
@@ -68,13 +70,13 @@ class UsersController < ApplicationController
                                    :password_confirmation)
     end
 
-    # Confirms the correct user.
+    # Confirms the current user.
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    # Confirms an admin user.
+    # Confirms an main user.
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end

@@ -1,6 +1,8 @@
 class Micropost < ApplicationRecord
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
+  # to set a default scope for all operations on the model.
+  #  applied while creating/building a record.
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 300 }
