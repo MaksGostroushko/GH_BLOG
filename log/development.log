@@ -11256,3 +11256,292 @@ Completed 200 OK in 346ms (Views: 328.2ms | ActiveRecord: 9.5ms)
 
   [1m[35m (58.5ms)[0m  [1m[35mCREATE DATABASE "sample_app" ENCODING = 'unicode'[0m
   ↳ bin/rails:9
+Started GET "/" for 127.0.0.1 at 2018-12-02 23:05:11 +0200
+Started GET "/" for 127.0.0.1 at 2018-12-02 23:05:14 +0200
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/max/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  ↳ /home/max/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#home as HTML
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendering static_pages/home.html.erb within layouts/application
+Started GET "/" for 127.0.0.1 at 2018-12-02 23:05:30 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (15718.1ms)
+Completed 500 Internal Server Error in 16230ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Undefined variable: "$gray-lighter".):
+  Rendered static_pages/home.html.erb within layouts/application (16140.5ms)
+Completed 500 Internal Server Error in 16214ms (ActiveRecord: 0.0ms)
+
+
+    20:   <div class="center jumbotron">
+    21:     <h1>Welcome to the blog</h1>
+    22:     <br>
+    23:     <%= link_to image_tag("signup.png", class: "sign"), signup_path %>
+    24:   </div>
+    25:   <%= image_tag("blog2.jpg", alt: "Rails logo", class: "blog-image")%>
+    26: <% end %>
+  
+ActionView::Template::Error (Undefined variable: "$gray-lighter".):
+  
+    20:   <div class="center jumbotron">
+    21:     <h1>Welcome to the blog</h1>
+    22:     <br>
+    23:     <%= link_to image_tag("signup.png", class: "sign"), signup_path %>
+    24:   </div>
+    25:   <%= image_tag("blog2.jpg", alt: "Rails logo", class: "blog-image")%>
+    26: <% end %>
+app/assets/stylesheets/custom.scss:147
+app/views/static_pages/home.html.erb:23:in `_app_views_static_pages_home_html_erb___711474954446380525_69868078877180'
+  
+app/assets/stylesheets/custom.scss:147
+app/views/static_pages/home.html.erb:23:in `_app_views_static_pages_home_html_erb___711474954446380525_69868078877180'
+Started GET "/" for 127.0.0.1 at 2018-12-02 23:05:33 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (958.9ms)
+Completed 500 Internal Server Error in 1040ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Undefined variable: "$gray-lighter".):
+    20:   <div class="center jumbotron">
+    21:     <h1>Welcome to the blog</h1>
+    22:     <br>
+    23:     <%= link_to image_tag("signup.png", class: "sign"), signup_path %>
+    24:   </div>
+    25:   <%= image_tag("blog2.jpg", alt: "Rails logo", class: "blog-image")%>
+    26: <% end %>
+  
+app/assets/stylesheets/custom.scss:147
+app/views/static_pages/home.html.erb:23:in `_app_views_static_pages_home_html_erb___711474954446380525_69868094176420'
+  Rendered static_pages/home.html.erb within layouts/application (9532.6ms)
+Completed 500 Internal Server Error in 9540ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Undefined variable: "$gray-lighter".):
+    20:   <div class="center jumbotron">
+    21:     <h1>Welcome to the blog</h1>
+    22:     <br>
+    23:     <%= link_to image_tag("signup.png", class: "sign"), signup_path %>
+    24:   </div>
+    25:   <%= image_tag("blog2.jpg", alt: "Rails logo", class: "blog-image")%>
+    26: <% end %>
+  
+app/assets/stylesheets/custom.scss:147
+app/views/static_pages/home.html.erb:23:in `_app_views_static_pages_home_html_erb___711474954446380525_69868168735960'
+Started GET "/" for 127.0.0.1 at 2018-12-02 23:08:54 +0200
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (4072.0ms)
+Completed 500 Internal Server Error in 4079ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Undefined variable: "$state-danger-text".):
+    20:   <div class="center jumbotron">
+    21:     <h1>Welcome to the blog</h1>
+    22:     <br>
+    23:     <%= link_to image_tag("signup.png", class: "sign"), signup_path %>
+    24:   </div>
+    25:   <%= image_tag("blog2.jpg", alt: "Rails logo", class: "blog-image")%>
+    26: <% end %>
+  
+app/assets/stylesheets/custom.scss:201
+app/views/static_pages/home.html.erb:23:in `_app_views_static_pages_home_html_erb___711474954446380525_69868156211020'
+Started GET "/" for 127.0.0.1 at 2018-12-02 23:10:23 +0200
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/max/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (5307.5ms)
+  Rendered layouts/_rails_default.html.erb (424.5ms)
+  Rendered layouts/_shim.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 5784ms (Views: 5755.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2018-12-02 23:10:37 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (272.6ms)
+  Rendered layouts/_rails_default.html.erb (227.0ms)
+  Rendered layouts/_shim.html.erb (0.6ms)
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 524ms (Views: 520.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2018-12-02 23:10:42 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"b3KpE9eziH471vXnE1wYbkzKCohXro/EMr6UKCsrXuqbHH0wh2aN4ZEQ8GbpiKRs2TrGQc8Nwvy8RyzLvuCqmQ==", "session"=>{"email"=>"makshostroyshko@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "makshostroyshko@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:50
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:50
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 358ms (ActiveRecord: 22.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-02 23:10:42 +0200
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/shared/_user_info.html.erb:4
+  Rendered shared/_user_info.html.erb (8.8ms)
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:5
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:11
+  Rendered shared/_stats.html.erb (72.0ms)
+  Rendered shared/_error_messages.html.erb (1.4ms)
+  Rendered shared/_micropost_form.html.erb (11.7ms)
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE (user_id IN (SELECT followed_id FROM relationships
+                     WHERE  follower_id = 1)
+                     OR user_id = 1)[0m
+  ↳ app/views/shared/_feed.html.erb:1
+  [1m[36mMicropost Load (2.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE (user_id IN (SELECT followed_id FROM relationships
+                     WHERE  follower_id = 1)
+                     OR user_id = 1) ORDER BY "microposts"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/shared/_feed.html.erb:3
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  Rendered collection of microposts/_micropost.html.erb [4 times] (30.1ms)
+  Rendered shared/_feed.html.erb (45.1ms)
+  Rendered static_pages/home.html.erb within layouts/application (147.6ms)
+  Rendered layouts/_rails_default.html.erb (209.2ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 515ms (Views: 363.2ms | ActiveRecord: 21.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-02 23:11:15 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:7
+  Rendered collection of users/_user.html.erb [11 times] (7.7ms)
+  Rendered users/index.html.erb within layouts/application (19.4ms)
+  Rendered layouts/_rails_default.html.erb (180.9ms)
+  Rendered layouts/_shim.html.erb (1.1ms)
+  Rendered layouts/_header.html.erb (2.6ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 228ms (Views: 217.9ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-02 23:12:16 +0200
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/max/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:7
+  Rendered collection of users/_user.html.erb [11 times] (9.5ms)
+  Rendered users/index.html.erb within layouts/application (21.9ms)
+  Rendered layouts/_rails_default.html.erb (1533.2ms)
+  Rendered layouts/_shim.html.erb (0.8ms)
+  Rendered layouts/_header.html.erb (4.3ms)
+  Rendered layouts/_footer.html.erb (2.8ms)
+Completed 200 OK in 1753ms (Views: 1578.6ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-02 23:13:40 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:7
+  Rendered collection of users/_user.html.erb [11 times] (9.4ms)
+  Rendered users/index.html.erb within layouts/application (24.1ms)
+  Rendered layouts/_rails_default.html.erb (280.9ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (1.8ms)
+Completed 200 OK in 333ms (Views: 322.0ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-02 23:14:48 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:7
+  Rendered collection of users/_user.html.erb [11 times] (8.4ms)
+  Rendered users/index.html.erb within layouts/application (20.7ms)
+  Rendered layouts/_rails_default.html.erb (193.2ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 238ms (Views: 227.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-02 23:16:19 +0200
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/max/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:7
+  Rendered collection of users/_user.html.erb [11 times] (7.4ms)
+  Rendered users/index.html.erb within layouts/application (45.4ms)
+  Rendered layouts/_rails_default.html.erb (5694.9ms)
+  Rendered layouts/_shim.html.erb (0.8ms)
+  Rendered layouts/_header.html.erb (2.6ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 5935ms (Views: 5759.7ms | ActiveRecord: 19.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-02 23:16:37 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering users/index.html.erb within layouts/application
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:7
+  Rendered collection of users/_user.html.erb [11 times] (7.4ms)
+  Rendered users/index.html.erb within layouts/application (18.1ms)
+  Rendered layouts/_rails_default.html.erb (117.3ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 159ms (Views: 150.2ms | ActiveRecord: 2.8ms)
+
+
