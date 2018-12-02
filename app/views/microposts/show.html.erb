@@ -1,0 +1,14 @@
+<%= @micropost.content %>
+<%= image_tag @micropost.picture.url if @micropost.picture? %>
+
+<%= form_for [@micropost, Comment.new] do |f| %>
+  <%= f.text_field :body, required: true %>
+  <%= f.submit %>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <p><%= comment.user.name %></p>
+  <p><%= comment.body %></p>
+  <%= link_to "Delete", [@micropost, comment], method: :delete if comment.user == current_user %>
+  <hr>
+<% end %>

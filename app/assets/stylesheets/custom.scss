@@ -277,7 +277,7 @@ span.picture {
 
 .blog-image {
   width: 639px;
-  height: 391px;
+  height: 295px;
   border: 3px solid #F6BF15;
   border-radius: 150px 150px 0px 0px;
   -webkit-border-radius: 150px 150px 0 0;
@@ -287,6 +287,11 @@ span.picture {
    margin:0 auto;
 }
 
-aside {
-  margin-left: 0;
+// aside {
+//   margin-left: 0;
+// }
+
+.sign{
+  width: 200px;
+  height: 150px;
 }

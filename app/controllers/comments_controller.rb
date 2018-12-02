@@ -1,35 +1,25 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-  before_action :find_article!
-
-  def index
-    @comments = @micropost.comments.order(created_at: :desc)
-  end
+  before_action :logged_in_user
+  before_action :find_micropost
 
   def create
-    @comment = @micropost.comments.new(comment_params)
-    @comment.user = current_user
-
-    render json: { errors: @comment.errors }, status: :unprocessable_entity unless @comment.save
+    @comment = @micropost.comments.create(comment_params.merge(user: current_user))
+    redirect_to @micropost
  end
 
   def destroy
-    @comment = @micropost.comment.find(params[:id])
-
-    if @comment.user_id == @current_user_id
-      @comment.destroy
-      render json: {}
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_back(fallback_location: root_path)
   end
-else
-  render json: { errors: { comment: ['not owned by user'] } },status: :forbidden
-    end
 
   private
 
-  def find_article!
-    @microposts = Microposts.find_by_slug!(params[:microposts_slug])
+  def find_micropost
+    @micropost = Micropost.find(params[:micropost_id])
   end
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
 end

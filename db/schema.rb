@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2018_12_01_222917) do
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.bigint "user_id"
-    t.bigint "microposts_id"
+    t.bigint "micropost_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["microposts_id"], name: "index_comments_on_microposts_id"
+    t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_12_01_222917) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "comments", "microposts", column: "microposts_id"
+  add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
   add_foreign_key "microposts", "users"
 end

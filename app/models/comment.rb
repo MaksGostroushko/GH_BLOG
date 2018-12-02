@@ -1,7 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :microposts
+  belongs_to :micropost
 
-  validates :body, presence: true, allow_blank: false
-  #allow_blank check that field don't empty
+  validates :body, presence: true
 end
