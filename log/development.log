@@ -11545,3 +11545,774 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 159ms (Views: 150.2ms | ActiveRecord: 2.8ms)
 
 
+Started GET "/users/1" for 127.0.0.1 at 2018-12-02 23:27:04 +0200
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/max/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:5
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:11
+  Rendered shared/_stats.html.erb (26.9ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered users/_follow_form.html.erb (1.8ms)
+  [1m[36mMicropost Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" WHERE "microposts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:16
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:17
+  [1m[36mMicropost Load (1.0ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered collection of microposts/_micropost.html.erb [4 times] (105.6ms)
+  Rendered users/show.html.erb within layouts/application (185.8ms)
+  Rendered layouts/_rails_default.html.erb (674.5ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (2.6ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 1096ms (Views: 864.3ms | ActiveRecord: 35.2ms)
+
+
+Started GET "/microposts/8" for 127.0.0.1 at 2018-12-02 23:27:09 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mMicropost Load (3.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 8]]
+  ↳ app/views/microposts/show.html.erb:9
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:11
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:11
+  Rendered microposts/show.html.erb within layouts/application (97.2ms)
+  Rendered layouts/_rails_default.html.erb (160.2ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (3.5ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 295ms (Views: 255.8ms | ActiveRecord: 24.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-02 23:27:15 +0200
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/shared/_user_info.html.erb:4
+  Rendered shared/_user_info.html.erb (8.1ms)
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:5
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:11
+  Rendered shared/_stats.html.erb (16.8ms)
+  Rendered shared/_error_messages.html.erb (1.3ms)
+  Rendered shared/_micropost_form.html.erb (9.6ms)
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE (user_id IN (SELECT followed_id FROM relationships
+                     WHERE  follower_id = 1)
+                     OR user_id = 1)[0m
+  ↳ app/views/shared/_feed.html.erb:1
+  [1m[36mMicropost Load (1.6ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE (user_id IN (SELECT followed_id FROM relationships
+                     WHERE  follower_id = 1)
+                     OR user_id = 1) ORDER BY "microposts"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/shared/_feed.html.erb:3
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  Rendered collection of microposts/_micropost.html.erb [4 times] (28.3ms)
+  Rendered shared/_feed.html.erb (39.9ms)
+  Rendered static_pages/home.html.erb within layouts/application (85.1ms)
+  Rendered layouts/_rails_default.html.erb (164.4ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (4.3ms)
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 287ms (Views: 263.0ms | ActiveRecord: 10.8ms)
+
+
+Started POST "/microposts" for 127.0.0.1 at 2018-12-02 23:27:20 +0200
+Processing by MicropostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JSDeWe7G3ncIDqN/j5+XQe2UllwRBlDyMkVUME4ATFgf/xUtHCu/kUXGf6PJqVnHvX8NBiCNWxuiM4+7Eo5bew==", "micropost"=>{"content"=>"sadsaf", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007fa79aca5910 @tempfile=#<Tempfile:/tmp/RackMultipart20181202-15157-1k5daye.png>, @original_filename="Screenshot from 2018-11-09 22-44-10.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"micropost[picture]\"; filename=\"Screenshot from 2018-11-09 22-44-10.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Post"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/microposts_controller.rb:7
+  [1m[36mMicropost Create (1.8ms)[0m  [1m[32mINSERT INTO "microposts" ("content", "user_id", "created_at", "updated_at", "picture") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "sadsaf"], ["user_id", 1], ["created_at", "2018-12-02 21:27:21.374753"], ["updated_at", "2018-12-02 21:27:21.374753"], ["picture", "Screenshot_from_2018-11-09_22-44-10.png"]]
+  ↳ app/controllers/microposts_controller.rb:7
+  [1m[35m (38.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/microposts_controller.rb:7
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 529ms (ActiveRecord: 41.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-02 23:27:21 +0200
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendering static_pages/home.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/shared/_user_info.html.erb:4
+  Rendered shared/_user_info.html.erb (5.9ms)
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:5
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:11
+  Rendered shared/_stats.html.erb (12.1ms)
+  Rendered shared/_error_messages.html.erb (1.5ms)
+  Rendered shared/_micropost_form.html.erb (7.0ms)
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE (user_id IN (SELECT followed_id FROM relationships
+                     WHERE  follower_id = 1)
+                     OR user_id = 1)[0m
+  ↳ app/views/shared/_feed.html.erb:1
+  [1m[36mMicropost Load (1.9ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE (user_id IN (SELECT followed_id FROM relationships
+                     WHERE  follower_id = 1)
+                     OR user_id = 1) ORDER BY "microposts"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/shared/_feed.html.erb:3
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/_micropost.html.erb:2
+  Rendered collection of microposts/_micropost.html.erb [5 times] (27.3ms)
+  Rendered shared/_feed.html.erb (39.4ms)
+  Rendered static_pages/home.html.erb within layouts/application (72.0ms)
+  Rendered layouts/_rails_default.html.erb (104.5ms)
+  Rendered layouts/_shim.html.erb (0.8ms)
+  Rendered layouts/_header.html.erb (2.8ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 201ms (Views: 184.4ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:27:23 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.0ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:9
+  Rendered microposts/show.html.erb within layouts/application (11.2ms)
+  Rendered layouts/_rails_default.html.erb (98.0ms)
+  Rendered layouts/_shim.html.erb (0.8ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (5.3ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 135ms (Views: 125.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:27:43 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (0.9ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:9
+  Rendered microposts/show.html.erb within layouts/application (8.6ms)
+  Rendered layouts/_rails_default.html.erb (101.8ms)
+  Rendered layouts/_shim.html.erb (0.8ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (5.0ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 135ms (Views: 126.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:28:44 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.0ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:14
+  Rendered microposts/show.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_rails_default.html.erb (104.2ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (4.9ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 138ms (Views: 129.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:29:13 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:16
+  Rendered microposts/show.html.erb within layouts/application (8.8ms)
+  Rendered layouts/_rails_default.html.erb (100.1ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (5.6ms)
+  Rendered layouts/_footer.html.erb (2.0ms)
+Completed 200 OK in 136ms (Views: 126.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:30:25 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.0ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:18
+  Rendered microposts/show.html.erb within layouts/application (9.6ms)
+  Rendered layouts/_rails_default.html.erb (103.1ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (5.6ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 137ms (Views: 129.4ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:31:24 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (0.9ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:19
+  Rendered microposts/show.html.erb within layouts/application (9.3ms)
+  Rendered layouts/_rails_default.html.erb (99.0ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered layouts/_header.html.erb (4.6ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 132ms (Views: 123.5ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/microposts/11/comments" for 127.0.0.1 at 2018-12-02 23:31:32 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jYDQtrA1gk3dTkkRdkITb1An3OaCTc6L3y4Xuc/fYXQJdiPQx8T0M/EYcJNxUo4yPN8r1yV6G2BGkZGtoik+QQ==", "comment"=>{"body"=>"fdsfasf"}, "commit"=>"Create Comment", "micropost_id"=>"11"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mMicropost Load (1.3ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (2.0ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "micropost_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "fdsfasf"], ["user_id", 1], ["micropost_id", 11], ["created_at", "2018-12-02 21:31:32.572425"], ["updated_at", "2018-12-02 21:31:32.572425"]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (17.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://0.0.0.0:3000/microposts/11
+Completed 302 Found in 39ms (ActiveRecord: 21.7ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:31:32 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered microposts/show.html.erb within layouts/application (14.3ms)
+  Rendered layouts/_rails_default.html.erb (120.2ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 158ms (Views: 148.1ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/microposts/11/comments" for 127.0.0.1 at 2018-12-02 23:31:38 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ol60NdeqiN+bLmkjNhtxO18wS2cAaQVDihmJWPmWZhW+qEdToFv+obd4UKExC+xmM8i8Vqde0KgTpg9MlGA5IA==", "comment"=>{"body"=>"sdfasd"}, "commit"=>"Create Comment", "micropost_id"=>"11"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mMicropost Load (3.2ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (1.5ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "micropost_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "sdfasd"], ["user_id", 1], ["micropost_id", 11], ["created_at", "2018-12-02 21:31:38.462849"], ["updated_at", "2018-12-02 21:31:38.462849"]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (27.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://0.0.0.0:3000/microposts/11
+Completed 302 Found in 49ms (ActiveRecord: 33.1ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:31:38 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  Rendered microposts/show.html.erb within layouts/application (18.2ms)
+  Rendered layouts/_rails_default.html.erb (99.5ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 143ms (Views: 133.3ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/microposts/11/comments" for 127.0.0.1 at 2018-12-02 23:31:40 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iqxd9KTusdpTqTk2bZiLZpuZ/M5imHdr2SM3HGOmk3EOWq6S0x/HpH//ALRqiBY792EL/8WvooBAnLEIDlDMRA==", "comment"=>{"body"=>"zxczxVzVX"}, "commit"=>"Create Comment", "micropost_id"=>"11"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mMicropost Load (1.0ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (1.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "micropost_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "zxczxVzVX"], ["user_id", 1], ["micropost_id", 11], ["created_at", "2018-12-02 21:31:40.751827"], ["updated_at", "2018-12-02 21:31:40.751827"]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (49.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://0.0.0.0:3000/microposts/11
+Completed 302 Found in 71ms (ActiveRecord: 53.1ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:31:40 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  Rendered microposts/show.html.erb within layouts/application (20.2ms)
+  Rendered layouts/_rails_default.html.erb (101.0ms)
+  Rendered layouts/_shim.html.erb (0.8ms)
+  Rendered layouts/_header.html.erb (2.4ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 143ms (Views: 134.2ms | ActiveRecord: 3.0ms)
+
+
+Started DELETE "/microposts/11/comments/7" for 127.0.0.1 at 2018-12-02 23:31:53 +0200
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"f+hTcVxOPxVpGkKjD1i8hrUXIeynsxMuShtyhWT6iiz7HqAXK79Ja0VMeyEISCHb2e/W3QCExsXTpPSRCQzVGQ==", "micropost_id"=>"11", "id"=>"7"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mMicropost Load (1.3ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:12
+  [1m[36mComment Destroy (0.8ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/comments_controller.rb:12
+  [1m[35m (26.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:12
+Redirected to http://0.0.0.0:3000/microposts/11
+Completed 302 Found in 44ms (ActiveRecord: 30.0ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:31:53 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.2ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  Rendered microposts/show.html.erb within layouts/application (16.5ms)
+  Rendered layouts/_rails_default.html.erb (99.8ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (2.5ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 139ms (Views: 129.2ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/microposts/11/comments" for 127.0.0.1 at 2018-12-02 23:31:59 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qAemrz7gRVgfK+NOMRpQWffqWULHlcZT4tKaJOBUjgws8VXJSREzJjN92sw2Cs0EmxKuc2CiE7h7bRwwjaLROQ==", "comment"=>{"body"=>"dsafsdag"}, "commit"=>"Create Comment", "micropost_id"=>"11"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mMicropost Load (1.2ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (1.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "micropost_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "dsafsdag"], ["user_id", 1], ["micropost_id", 11], ["created_at", "2018-12-02 21:31:59.269995"], ["updated_at", "2018-12-02 21:31:59.269995"]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (32.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://0.0.0.0:3000/microposts/11
+Completed 302 Found in 54ms (ActiveRecord: 36.4ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:31:59 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  Rendered microposts/show.html.erb within layouts/application (19.3ms)
+  Rendered layouts/_rails_default.html.erb (100.3ms)
+  Rendered layouts/_shim.html.erb (0.9ms)
+  Rendered layouts/_header.html.erb (2.6ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 142ms (Views: 133.0ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/microposts/11/comments" for 127.0.0.1 at 2018-12-02 23:32:01 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Fw30c5FVdbuVycXXquM/BUCN1QAP7C+y4UI0WYwLEoiT+wcV5qQDxbmf/FWt86JYLHUiMajb+ll4/bJN4f1NvQ==", "comment"=>{"body"=>"dsafsda"}, "commit"=>"Create Comment", "micropost_id"=>"11"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mMicropost Load (1.2ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (1.7ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "micropost_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "dsafsda"], ["user_id", 1], ["micropost_id", 11], ["created_at", "2018-12-02 21:32:01.142373"], ["updated_at", "2018-12-02 21:32:01.142373"]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (36.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://0.0.0.0:3000/microposts/11
+Completed 302 Found in 61ms (ActiveRecord: 40.7ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:32:01 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.0ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  Rendered microposts/show.html.erb within layouts/application (23.8ms)
+  Rendered layouts/_rails_default.html.erb (103.6ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (2.8ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 150ms (Views: 140.9ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/microposts/11/comments" for 127.0.0.1 at 2018-12-02 23:32:03 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8XScaWFfm69Lsw2WJHhwq4MWHL1saK68UhxcCuIc9L11gm8PFq7t0WflNBQjaO327+7rjMtfe1fLo9oej+qriA==", "comment"=>{"body"=>"dsfsadf"}, "commit"=>"Create Comment", "micropost_id"=>"11"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mMicropost Load (1.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (1.5ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "micropost_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "dsfsadf"], ["user_id", 1], ["micropost_id", 11], ["created_at", "2018-12-02 21:32:03.787519"], ["updated_at", "2018-12-02 21:32:03.787519"]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (25.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://0.0.0.0:3000/microposts/11
+Completed 302 Found in 46ms (ActiveRecord: 29.4ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:32:03 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  Rendered microposts/show.html.erb within layouts/application (26.7ms)
+  Rendered layouts/_rails_default.html.erb (107.2ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (2.7ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 156ms (Views: 146.7ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/microposts/11/comments" for 127.0.0.1 at 2018-12-02 23:32:05 +0200
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"98SPOMa4nEp+j12h8IMTEWePKDHlPvR99jiAdSv+fz5zMnxesUnqNFLZZCP3k45MC3ffAEIJIZZvhwZhRgggCw==", "comment"=>{"body"=>"sdfsda"}, "commit"=>"Create Comment", "micropost_id"=>"11"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mMicropost Load (1.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[36mComment Create (1.4ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "micropost_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "sdfsda"], ["user_id", 1], ["micropost_id", 11], ["created_at", "2018-12-02 21:32:05.862425"], ["updated_at", "2018-12-02 21:32:05.862425"]]
+  ↳ app/controllers/comments_controller.rb:6
+  [1m[35m (84.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:6
+Redirected to http://0.0.0.0:3000/microposts/11
+Completed 302 Found in 106ms (ActiveRecord: 87.9ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:32:05 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:20
+  Rendered microposts/show.html.erb within layouts/application (31.7ms)
+  Rendered layouts/_rails_default.html.erb (128.8ms)
+  Rendered layouts/_shim.html.erb (0.8ms)
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 185ms (Views: 174.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:32:13 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (0.9ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:19
+  Rendered microposts/show.html.erb within layouts/application (30.1ms)
+  Rendered layouts/_rails_default.html.erb (104.4ms)
+  Rendered layouts/_shim.html.erb (0.8ms)
+  Rendered layouts/_header.html.erb (2.7ms)
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 158ms (Views: 149.3ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:32:38 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:17
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  Rendered microposts/show.html.erb within layouts/application (30.0ms)
+  Rendered layouts/_rails_default.html.erb (100.5ms)
+  Rendered layouts/_shim.html.erb (0.8ms)
+  Rendered layouts/_header.html.erb (2.7ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 155ms (Views: 143.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/microposts/11" for 127.0.0.1 at 2018-12-02 23:34:00 +0200
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMicropost Load (1.0ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:17
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 11]]
+  ↳ app/views/microposts/show.html.erb:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:18
+  Rendered microposts/show.html.erb within layouts/application (32.0ms)
+  Rendered layouts/_rails_default.html.erb (103.4ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (3.1ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 158ms (Views: 149.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-12-02 23:34:19 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:5
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:11
+  Rendered shared/_stats.html.erb (12.5ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered users/_follow_form.html.erb (1.4ms)
+  [1m[36mMicropost Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" WHERE "microposts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:16
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:17
+  [1m[36mMicropost Load (1.3ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered collection of microposts/_micropost.html.erb [5 times] (15.2ms)
+  Rendered users/show.html.erb within layouts/application (55.0ms)
+  Rendered layouts/_rails_default.html.erb (123.1ms)
+  Rendered layouts/_shim.html.erb (0.9ms)
+  Rendered layouts/_header.html.erb (2.9ms)
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 205ms (Views: 187.9ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-12-02 23:34:28 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:5
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:11
+  Rendered shared/_stats.html.erb (12.8ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered users/_follow_form.html.erb (1.6ms)
+  [1m[36mMicropost Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" WHERE "microposts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:16
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:17
+  [1m[36mMicropost Load (1.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered collection of microposts/_micropost.html.erb [5 times] (11.5ms)
+  Rendered users/show.html.erb within layouts/application (47.2ms)
+  Rendered layouts/_rails_default.html.erb (99.4ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 168ms (Views: 153.7ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-12-02 23:34:34 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:5
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:11
+  Rendered shared/_stats.html.erb (14.1ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:22
+  Rendered users/_follow_form.html.erb (1.6ms)
+  [1m[36mMicropost Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" WHERE "microposts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:16
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:17
+  [1m[36mMicropost Load (1.1ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  ↳ app/views/users/show.html.erb:19
+  Rendered collection of microposts/_micropost.html.erb [5 times] (16.0ms)
+  Rendered users/show.html.erb within layouts/application (57.2ms)
+  Rendered layouts/_rails_default.html.erb (101.2ms)
+  Rendered layouts/_shim.html.erb (0.7ms)
+  Rendered layouts/_header.html.erb (2.5ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 181ms (Views: 165.8ms | ActiveRecord: 8.5ms)
+
+
