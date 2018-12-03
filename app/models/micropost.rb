@@ -5,7 +5,7 @@ class Micropost < ApplicationRecord
   #  applied while creating/building a record.
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 300 }
+  validates :content, presence: true, length: { maximum: 2000 }
   validate  :picture_size
   has_many :comments, dependent: :destroy
 
