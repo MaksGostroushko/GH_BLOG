@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_01_222917) do
+ActiveRecord::Schema.define(version: 2018_12_04_123350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_12_01_222917) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.integer "view"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
@@ -51,6 +52,15 @@ ActiveRecord::Schema.define(version: 2018_12_01_222917) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "upvotes", force: :cascade do |t|
+    t.bigint "micropost_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["micropost_id"], name: "index_upvotes_on_micropost_id"
+    t.index ["user_id"], name: "index_upvotes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -69,4 +79,6 @@ ActiveRecord::Schema.define(version: 2018_12_01_222917) do
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
   add_foreign_key "microposts", "users"
+  add_foreign_key "upvotes", "microposts"
+  add_foreign_key "upvotes", "users"
 end

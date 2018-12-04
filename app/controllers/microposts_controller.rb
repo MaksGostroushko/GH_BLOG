@@ -16,6 +16,13 @@ class MicropostsController < ApplicationController
   def show
     @micropost = Micropost.find(params[:id])
     @comments = @micropost.comments
+
+    if cookies[:views].present?
+      cookies[:views] = cookies[:views].to_i + 1
+    else
+      cookies[:views] = 1
+    end
+
   end
 
   def destroy
