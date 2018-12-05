@@ -1,6 +1,9 @@
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
+    <span>Title:</span>
+    <%= f.text_field :title, class: 'form-control' %>
+    <span> Body:</span>
     <%= f.trix_editor :content, placeholder: "Compose new micropost...", class: 'editor' %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>

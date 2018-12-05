@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_123350) do
+ActiveRecord::Schema.define(version: 2018_12_05_195456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2018_12_04_123350) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "micropost_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["micropost_id"], name: "index_likes_on_micropost_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "microposts", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
@@ -32,6 +41,10 @@ ActiveRecord::Schema.define(version: 2018_12_04_123350) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.integer "view"
+    t.integer "views_count", default: 0
+    t.text "title"
+    t.boolean "published", default: false
+    t.string "link"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
@@ -73,11 +86,14 @@ ActiveRecord::Schema.define(version: 2018_12_04_123350) do
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"
+    t.boolean "banned", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "comments", "microposts"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "microposts"
+  add_foreign_key "likes", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "upvotes", "microposts"
   add_foreign_key "upvotes", "users"

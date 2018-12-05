@@ -435,7 +435,7 @@ DEPENDENCIES
   carrierwave (= 1.2.2)
   chromedriver-helper
   coffee-rails (~> 4.2)
-  curl (~> 0.0.9)
+  curl
   faker (= 1.7.3)
   fog (= 1.42)
   jbuilder (~> 2.5)

@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'curl', '~> 0.0.9'
+gem 'curl'
 gem 'minitest-reporters'
 gem 'bootstrap-sass', '3.3.7'
 gem 'rails-controller-testing'

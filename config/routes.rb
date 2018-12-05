@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get    '/login',    to: 'sessions#new'
   post   '/login',    to: 'sessions#create'
   delete '/logout',   to: 'sessions#destroy'
+  patch 'toggle_banned/:id', to: 'users#toggle_banned', as: 'toggle_banned'
 
   resources :users do
     member do
@@ -15,9 +16,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :microposts do
+    resources :likes
+  end
+
   # resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :microposts, only: [:create, :destroy, :show] do
+  resources :microposts, only: [:create, :destroy, :show, :update] do
     resources :comments, only: [:create, :destroy]
   end
   resources :relationships,       only: [:create, :destroy]
