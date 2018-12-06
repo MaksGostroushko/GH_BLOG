@@ -29,7 +29,8 @@ class MicropostsController < ApplicationController
     # @micropost = Micropost.find(params[:id])
 
     if @micropost.update!(micropost_params)
-      redirect_to @micropost, notice: 'Post was successfully updated'
+      redirect_to @micropost
+      flash[:success] =  'Post was successfully updated'
     else
       render 'edit'
     end
