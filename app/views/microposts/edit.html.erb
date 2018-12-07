@@ -2,6 +2,7 @@
   <div class="">
     <h3><strong>Title</strong></h3>
     <%= form_for @micropost do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
       <%= f.text_field :title, class: 'form-control' %>
       <h3><strong>Post</strong></h3>
       <%= f.trix_editor :content, required: true %>

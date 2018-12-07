@@ -23,6 +23,7 @@ class UsersController < ApplicationController
       log_in @user
       # flash[:info] = "Your profile is registered. Please log in"
       redirect_to root_path
+      flash[:info] = "Welcome to Blog"
     else
       render 'new'
     end
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
   def toggle_banned
     @user.toggle!(:banned)
     redirect_to users_path
-     flash[:success] = 'User update' 
+     flash[:success] = 'User update'
   end
 
   def update

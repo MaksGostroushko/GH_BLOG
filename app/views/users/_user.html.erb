@@ -5,6 +5,6 @@
     | <%= link_to 'banned', toggle_banned_path(user, { banned: true }), method: :patch %>
     | <%= link_to 'unbanned', toggle_banned_path(user, { banned: false }), method: :patch  %>
     | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
+                                  data: { confirm: "Are you sure?" } %>
   <% end %>
 </li>

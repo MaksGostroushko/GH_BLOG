@@ -6,7 +6,12 @@ class CommentsController < ApplicationController
   # records with other
   def create
     @comment = @micropost.comments.create(comment_params.merge(user: current_user))
-    redirect_to @micropost
+    if @comment.save
+      redirect_to @micropost
+    else
+      redirect_to @micropost
+      flash[:danger] = "Too many symbols"
+    end
  end
 
   def destroy

@@ -1,22 +1,26 @@
 
-<div class="col-md-6">
+<div class="col-md-12">
   <div class="">
-    <h3><strong>Title</strong></h3>
-    <%= @micropost.title %>
-    <h3><strong>Post</strong></h3>
-    <%= sanitize @micropost.content %>
+    <h3 class="show_title_post"><strong>Title</strong></h3>
+    <div class="h1_show"><%= @micropost.title %></div>
+    <h3 class="show_title_post"><strong>Post</strong></h3>
+    <%= sanitize @micropost.content%>
   </div>
   <br>
-  <div class="">
+  <div class="show_title_post">
   <%= image_tag @micropost.picture.url if @micropost.picture? %>
   </div>
+  <div class="video"><%= get_video_iframe(@micropost.link) %></div>
 </div>
 
-<div class="col-md-6">
-  <h3><strong>Comments</strong></h3>
+  <p></p>
+
+<div class="col-md-0">
+  <h3 class="comments"><strong>Comments</strong></h3>
 <%= form_for [@micropost, Comment.new] do |f| %>
   <%= f.text_field :body, required: true, class: 'form-control' %>
   <%= f.submit 'Create comment', class: 'btn btn-success' %>
+  <hr>
 <% end %>
 
 <% @comments.each do |comment| %>
@@ -26,5 +30,4 @@
     <%= link_to "Delete", [@micropost, comment], method: :delete if comment.user == current_user %>
     <hr>
   <% end %>
-  <div class="video "><%= get_video_iframe(@micropost.link) %></div>
 </div>
