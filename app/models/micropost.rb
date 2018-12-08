@@ -8,8 +8,8 @@ class Micropost < ApplicationRecord
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
 
-  validates :title, presence: true, length: { minimum: 3 }
-  validates :content, presence: true, length: { maximum: 10000 }
+  validates :title, presence: true, length: { minimum: 3, maximum: 30 }
+  validates :content, presence: true, length: { minimum: 25,  maximum: 10000 }
   validate  :picture_size
 
   mount_uploader :picture, PictureUploader

@@ -102,13 +102,13 @@
  }
 
  /* miscellaneous */
- .debug_dump {
-   clear: both;
-   float: left;
-   width: 100%;
-   margin-top: 45px;
-   @include box_sizing;
- }
+ // .debug_dump {
+ //   clear: both;
+ //   float: left;
+ //   width: 100%;
+ //   margin-top: 45px;
+ //   @include box_sizing;
+ // }
 
  /* sidebar */
  aside {
@@ -259,7 +259,7 @@
      }
    }
    .timestamp {
-     color: $gray-light;
+     color: 00FF00;
      display: block;
      margin-left: 60px;
    }
@@ -303,8 +303,8 @@
  // }
 
  .sign {
-   width: 200px;
-   height: 150px;
+   width: 1150px;
+   height: 575px;
  }
 
  .views-image {
@@ -343,4 +343,8 @@
 
   .trix-content {
     min-height: 120px;
+  }
+
+  .show_content {
+    text-align: center;
   }

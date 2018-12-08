@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post   '/login',    to: 'sessions#create'
   delete '/logout',   to: 'sessions#destroy'
   patch 'toggle_banned/:id', to: 'users#toggle_banned', as: 'toggle_banned'
+  get 'index', to:'microposts#index'
 
   resources :users do
     member do

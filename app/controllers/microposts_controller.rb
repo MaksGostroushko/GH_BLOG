@@ -3,6 +3,10 @@ class MicropostsController < ApplicationController
   before_action :correct_user,   only: :destroy
   before_action :set_params,     only: [:show, :edit, :update]
 
+  def index
+    @microposts = Micropost.all.order('views_count DESC')
+  end
+
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
@@ -27,10 +31,11 @@ class MicropostsController < ApplicationController
 
   def update
     # @micropost = Micropost.find(params[:id])
-    if @micropost.update!(micropost_params)
+    if @micropost.update(micropost_params)
       redirect_to @micropost
       flash[:success] =  'Post was successfully updated'
     else
+      # flash[:danger] =  'You have problem'
       render 'edit'
     end
   end

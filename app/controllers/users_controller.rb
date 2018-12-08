@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @microposts = @user.microposts.paginate(page: params[:page])
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 4)
   end
 
   def new
@@ -19,11 +19,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # @user.send_activation_email
       log_in @user
-      # flash[:info] = "Your profile is registered. Please log in"
       redirect_to root_path
-      flash[:info] = "Welcome to Blog"
+      flash[:info] = "Welcome to GHBlog"
     else
       render 'new'
     end
@@ -55,13 +53,13 @@ class UsersController < ApplicationController
 
   def following
     @title = "Following"
-    @users = @user.following.paginate(page: params[:page])
+    @users = @user.following.paginate(page: params[:page], per_page: 10)
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
-    @users = @user.followers.paginate(page: params[:page])
+    @users = @user.followers.paginate(page: params[:page], per_page: 10)
     render 'show_follow'
   end
 

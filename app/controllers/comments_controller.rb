@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       redirect_to @micropost
     else
       redirect_to @micropost
-      flash[:danger] = "Too many symbols"
+      flash[:danger] = "Comment is too long (maximum is 100 characters)"
     end
  end
 
