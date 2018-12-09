@@ -5,11 +5,12 @@ class UsersController < ApplicationController
   before_action :set_params, only: [:show, :toggle_banned, :update, :edit, :following, :followers]
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 4)
+    @users = User.paginate(page: params[:page], per_page: 7)
+    @microposts = Micropost.all
   end
 
   def show
-    @microposts = @user.microposts.paginate(page: params[:page], per_page: 4)
+    @microposts = @user.microposts.paginate(page: params[:page])#, per_page: 7)
   end
 
   def new
@@ -49,18 +50,6 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to users_url
-  end
-
-  def following
-    @title = "Following"
-    @users = @user.following.paginate(page: params[:page], per_page: 10)
-    render 'show_follow'
-  end
-
-  def followers
-    @title = "Followers"
-    @users = @user.followers.paginate(page: params[:page], per_page: 10)
-    render 'show_follow'
   end
 
   private

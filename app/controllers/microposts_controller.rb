@@ -4,7 +4,7 @@ class MicropostsController < ApplicationController
   before_action :set_params,     only: [:show, :edit, :update]
 
   def index
-    @microposts = Micropost.all.order('views_count DESC')
+    # @microposts = Micropost.all
   end
 
   def create

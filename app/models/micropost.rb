@@ -4,7 +4,7 @@ class Micropost < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  scope :views, -> { order(:views_count) }
+  scope :views, -> { order('views_count DESC') }
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
 
