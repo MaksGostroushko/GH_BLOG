@@ -3,10 +3,6 @@ class MicropostsController < ApplicationController
   before_action :correct_user,   only: :destroy
   before_action :set_params,     only: [:show, :edit, :update]
 
-  def index
-    # @microposts = Micropost.all
-  end
-
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
@@ -18,11 +14,12 @@ class MicropostsController < ApplicationController
     end
   end
 
+
   def show
     # @micropost = Micropost.find(params[:id])
     @comments = @micropost.comments
-
     @micropost.increment!(:views_count)
+
   end
 
   def edit

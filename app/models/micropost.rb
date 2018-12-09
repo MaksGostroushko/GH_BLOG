@@ -4,7 +4,10 @@ class Micropost < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  scope :views, -> { order('views_count DESC') }
+  scope :views, -> { reorder(views_count: :desc) }
+  scope :desc, -> { order(created_at: :desc) }
+  scope :asc, -> { reorder(:created_at) }
+  scope :votes, -> { reorder(likes_count: :desc) }
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
 
@@ -13,6 +16,10 @@ class Micropost < ApplicationRecord
   validate  :picture_size
 
   mount_uploader :picture, PictureUploader
+
+  def user_like
+    likes.find_by(user: user)
+  end
 
   private
     # Validates the size of an uploaded picture.

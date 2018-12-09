@@ -9,10 +9,15 @@
     </section>
   </aside>
   <div class="col-md-8">
+    Sorting by:
+    <%= link_to "views", user_path(params[:id], sorting: 'views')%> |
+    <%= link_to "asceding", user_path(params[:id], sorting: 'asc') %> |
+    <%= link_to "descending", user_path(params[:id], sorting: 'desc') %> |
+    <%= link_to "likes", user_path(params[:id], sorting: 'votes') %>
     <h3>Posts (<%= @user.microposts.count %>)</h3>
     <% if @user.microposts.any? %>
       <ol class="microposts">
-        <%= render @microposts.sort_by(&:views_count).reverse %>
+        <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts %>
     <% end %>

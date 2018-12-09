@@ -18,8 +18,11 @@
 </div>
 
 <div class="gravatar">
-<%= link_to "Like", micropost_likes_path(@micropost), method: :post %>
-<%= link_to "Dislike", [@micropost, @micropost.likes.last], method: :delete, remote: true if @micropost.likes.count > 0 %>
+  <% if @micropost.user_like.present?  %>
+<%= button_to "Unlike", [@micropost, @micropost.user_like], method: :delete, data: { disable_with: "please, wait" }  %>
+  <% else %>
+<%= button_to "Like", micropost_likes_path(@micropost), data: { disable_with: "please, wait" } %>
+<% end %>
  Likes: <%= @micropost.likes.count %>
  <hr class="hr">
  </div>
@@ -43,7 +46,7 @@
     <%= link_to "Delete", [@micropost, comment], method: :delete if comment.user == current_user %>
     </div>
     <hr>
-    
+
   <% end %>
 
 </div>
