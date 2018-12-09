@@ -14,7 +14,7 @@
     <%= link_to "asceding", user_path(params[:id], sorting: 'asc') %> |
     <%= link_to "descending", user_path(params[:id], sorting: 'desc') %> |
     <%= link_to "likes", user_path(params[:id], sorting: 'votes') %>
-    <h3>Posts (<%= @user.microposts.count %>)</h3>
+    <h3>Posts (<%= @user.microposts.published.count %>)</h3>
     <% if @user.microposts.any? %>
       <ol class="microposts">
         <%= render @microposts %>

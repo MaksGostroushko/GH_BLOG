@@ -23,16 +23,13 @@ class MicropostsController < ApplicationController
   end
 
   def edit
-    # @micropost = Micropost.find(params[:id])
   end
 
   def update
-    # @micropost = Micropost.find(params[:id])
-    if @micropost.update(micropost_params)
-      redirect_to @micropost
-      flash[:success] =  'Post was successfully updated'
+    if @micropost.update!(micropost_params)
+      flash[:success] = "Post updated"
+      redirect_to root_path
     else
-      # flash[:danger] =  'You have problem'
       render 'edit'
     end
   end
@@ -41,7 +38,6 @@ class MicropostsController < ApplicationController
     @micropost.destroy
     flash[:success] = "Micropost deleted"
     redirect_to request.referrer || root_url
-    # referrer - get request referer path?
   end
 
   private
@@ -51,7 +47,7 @@ class MicropostsController < ApplicationController
     end
 
     def micropost_params
-      params.require(:micropost).permit(:title, :content, :picture, :link)
+      params.require(:micropost).permit(:title, :content, :picture, :link, :published)
     end
 
     def correct_user

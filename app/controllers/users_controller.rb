@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @microposts = @user.microposts.desc
+    @microposts = @user.microposts.published.desc
     @microposts = @microposts.public_send(params[:sorting]) if params[:sorting].present?
     @microposts = @microposts.paginate(page: params[:page])
   end

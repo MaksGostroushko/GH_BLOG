@@ -9,7 +9,6 @@ class Micropost < ApplicationRecord
   scope :asc, -> { reorder(:created_at) }
   scope :votes, -> { reorder(likes_count: :desc) }
   scope :published, -> { where(published: true) }
-  scope :unpublished, -> { where(published: false) }
 
   validates :title, presence: true, length: { minimum: 3, maximum: 30 }
   validates :content, presence: true, length: { minimum: 25,  maximum: 10000 }
