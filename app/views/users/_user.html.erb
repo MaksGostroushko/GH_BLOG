@@ -2,9 +2,13 @@
   <%= gravatar_for user, size: 50 %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to 'banned', toggle_banned_path(user, { banned: true }), method: :patch %>
+    <% if user.banned? %>
     | <%= link_to 'unbanned', toggle_banned_path(user, { banned: false }), method: :patch  %>
+    <% else %>
+    | <%= link_to 'banned', toggle_banned_path(user, { banned: true }), method: :patch %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "Are you sure?" } %>
+
+    <% end %>
   <% end %>
 </li>
