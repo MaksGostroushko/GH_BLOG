@@ -20,7 +20,7 @@
       <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "Are you sure?" } %>
     |
-    <%= link_to "published", micropost_path(micropost,{ micropost: { published: true }}), method: :patch unless micropost.published %>
+    <%= link_to "published", micropost_path(micropost,{ micropost: { published: true }}), data: { confirm: 'Are you sure' }, method: :patch unless micropost.published %>
 
     <% end %>
     <p></p>
