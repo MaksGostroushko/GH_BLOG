@@ -1,11 +1,15 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
-  before_action :set_params,     only: [:show, :edit, :update]
+  before_action :set_params, only: [:show, :edit, :update], except: :index
 
   def index
     if params[:search]
-      @micropost = Micropost.find(params[:search].order('created_at desc'))
+      @microposts = Micropost.search(params[:search]).order('created_at DESC')
+      redirect_to user
+    else
+      @microposts = Micropost.all.order('created_at DESC')
+      redirect_to user
     end
   end
 

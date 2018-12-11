@@ -13,9 +13,15 @@
  }
 
  /* universal */
- body {
-   padding-top: 60px;
- }
+ // body {
+ //   padding-top: 60px;
+ // }
+ //
+ // body {
+ //   margin-top: 0px;
+ //   padding-top: 0px;
+ // }
+
 
  section {
    overflow: auto;
@@ -100,15 +106,6 @@
      }
    }
  }
-
- /* miscellaneous */
- // .debug_dump {
- //   clear: both;
- //   float: left;
- //   width: 100%;
- //   margin-top: 45px;
- //   @include box_sizing;
- // }
 
  /* sidebar */
  aside {
@@ -373,7 +370,12 @@
     color: black;
   }
 
-  body {
-    margin-top: 0px;
-    padding-top: 0px;
+  .search_button{
+    max-width: 150px;
+    margin-left: 28px;
+  }
+
+  .footer-posts {
+    padding-left: 60px;
+    max-width: 200px;
   }

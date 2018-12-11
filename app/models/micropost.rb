@@ -23,14 +23,19 @@ class Micropost < ApplicationRecord
   end
 
   def all_tags
-    self.tags.map(&:name).join(', ')
+  self.tags.map(&:name).join(', ')
   end
 
   def all_tags=(names)
-    self.tags = names.split(',').map do |name|
-      Tag.where(name: name.strip).first_or_create
+    self.tags = names.split(', ').map do |name|
+    Tag.where(name: name.strip).first_or_create!
     end
   end
+
+  def self.search(search)
+    where(("title ILIKE ?"), "%#{search}%")
+  end
+
   private
     # Validates the size of an uploaded picture.
     def picture_size

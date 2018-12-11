@@ -30,5 +30,5 @@
 </li>
 
 <section class="footer-posts">
-  <%= raw micropost.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'tag tag-primary'}.join(' ') %>
+  <%= raw micropost.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'tag tag-primary tag-posts'}.join(' ') %>
 </section>
