@@ -350,8 +350,8 @@
   }
 
   .like {
-    width:20px;
-    height: 20px;
+    max-width:90px;
+    // height: 20px;
   }
 
   .show-comment {
@@ -367,4 +367,13 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     border-radius: 5px;
+  }
+
+  .title {
+    color: black;
+  }
+
+  body {
+    margin-top: 0px;
+    padding-top: 0px;
   }

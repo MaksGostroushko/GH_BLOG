@@ -3,7 +3,7 @@
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
 
   <span class="content">
-    <strong class="h1_feed"><%= micropost.title %></strong>
+    <strong class="h1_feed"><%= link_to("#{micropost.title}", micropost, { class: "title"}) %></strong>
     <%= image_tag micropost.picture.url if micropost.picture? %>
   </span>
 
@@ -27,5 +27,8 @@
     <%= image_tag('eye2.png', alt: 'views', class: "views-image")%><%=
     micropost.views_count%>
   </span>
-
 </li>
+
+<section class="footer-posts">
+  <%= raw micropost.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'tag tag-primary'}.join(' ') %>
+</section>

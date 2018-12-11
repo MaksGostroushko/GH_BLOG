@@ -6,6 +6,8 @@
       <%= f.text_field :title, class: 'form-control' %>
       <h3><strong>Post</strong></h3>
       <%= f.trix_editor :content, required: true %>
+      <h3>All tags:</h3>
+      <%= f.text_field :all_tags, class: 'form-control' %>
       <br>
       <%= f.file_field :picture, class: 'form-control' %>
       <h3><strong>Link video</strong></h3>

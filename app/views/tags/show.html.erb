@@ -1,0 +1,7 @@
+<h1><%= @tag.name %></h1>
+
+<% if @tag.microposts.empty? %>
+  <h2>Sorry, there are no posts in this tag</h2>
+<% else %>
+  <%= render @tag.microposts %>
+<% end %>

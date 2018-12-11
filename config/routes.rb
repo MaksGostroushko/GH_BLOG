@@ -20,4 +20,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   resources :pictures, only: [:create, :destroy]
+
+  resources :tags, only: [:show]
 end

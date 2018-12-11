@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_09_203031) do
+ActiveRecord::Schema.define(version: 2018_12_11_173830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,21 @@ ActiveRecord::Schema.define(version: 2018_12_09_203031) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "micropost_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["micropost_id"], name: "index_taggings_on_micropost_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "upvotes", force: :cascade do |t|
     t.bigint "micropost_id"
     t.bigint "user_id"
@@ -96,6 +111,8 @@ ActiveRecord::Schema.define(version: 2018_12_09_203031) do
   add_foreign_key "likes", "microposts"
   add_foreign_key "likes", "users"
   add_foreign_key "microposts", "users"
+  add_foreign_key "taggings", "microposts"
+  add_foreign_key "taggings", "tags"
   add_foreign_key "upvotes", "microposts"
   add_foreign_key "upvotes", "users"
 end

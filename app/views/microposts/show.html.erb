@@ -18,11 +18,11 @@
 </div>
 
 <div class="gravatar">
-  <% if @micropost.user_like.present?  %>
-<%= button_to "Unlike", [@micropost, @micropost.user_like], method: :delete, data: { disable_with: "please, wait" }  %>
+  <% if @micropost.user_like(current_user).present?  %>
+    <%= button_to "Unlike", [@micropost, @micropost.user_like(current_user)], method: :delete, data: { disable_with: "please, wait" }, class: 'btn btn-danger like' %>
   <% else %>
-<%= button_to "Like", micropost_likes_path(@micropost), data: { disable_with: "please, wait" } %>
-<% end %>
+    <%= button_to "Like", micropost_likes_path(@micropost), data: { disable_with: "please, wait" }, class: 'btn btn-success like' %>
+  <% end %>
  Likes: <%= @micropost.likes.count %>
  <hr class="hr">
  </div>

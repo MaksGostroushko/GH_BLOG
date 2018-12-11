@@ -3,6 +3,12 @@ class MicropostsController < ApplicationController
   before_action :correct_user,   only: :destroy
   before_action :set_params,     only: [:show, :edit, :update]
 
+  def index
+    if params[:search]
+      @micropost = Micropost.find(params[:search].order('created_at desc'))
+    end
+  end
+
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
@@ -47,7 +53,7 @@ class MicropostsController < ApplicationController
     end
 
     def micropost_params
-      params.require(:micropost).permit(:title, :content, :picture, :link, :published)
+      params.require(:micropost).permit(:title, :content, :picture, :link, :published, :all_tags)
     end
 
     def correct_user
@@ -56,6 +62,6 @@ class MicropostsController < ApplicationController
     end
 
     def post_params
-      params.require(:micropost).permit(:body, :image)
+      params.require(:micropost).permit(:body, :image, :all_tags)
     end
 end

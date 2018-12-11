@@ -3,6 +3,8 @@ class Micropost < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many:taggings
+  has_many:tags, through: :taggings
 
   scope :views, -> { reorder(views_count: :desc) }
   scope :desc, -> { order(created_at: :desc) }
@@ -16,10 +18,19 @@ class Micropost < ApplicationRecord
 
   mount_uploader :picture, PictureUploader
 
-  def user_like
+  def user_like(user)
     likes.find_by(user: user)
   end
 
+  def all_tags
+    self.tags.map(&:name).join(', ')
+  end
+
+  def all_tags=(names)
+    self.tags = names.split(',').map do |name|
+      Tag.where(name: name.strip).first_or_create
+    end
+  end
   private
     # Validates the size of an uploaded picture.
     def picture_size
