@@ -24,11 +24,13 @@
 
     <% end %>
     <p></p>
-    <%= image_tag('eye2.png', alt: 'views', class: "views-image")%><%=
-    micropost.views_count%>
+    <%= image_tag('eye2.png', alt: 'views', class: "views-image")%>
+    <%= micropost.views_count%> |
+    Comments: <%= micropost.comments.count %> |
+    Likes:<%= micropost.likes_count || 0 %>
   </span>
 </li>
 
 <section class="footer-posts">
-  <%= raw micropost.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'tag tag-primary tag-posts'}.join(' ') %>
+  <%= sanitize micropost.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-pill badge-primary'}.join(' ') %>
 </section>

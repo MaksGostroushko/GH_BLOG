@@ -31,11 +31,15 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
-  host = 'example.com' # Don't use this literally; use your local dev host instead
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :file
+  host = 'localhost:3000' # Don't use this literally; use your local dev host instead
+  config.action_mailer.delivery_method = :letter_opener_web
+
+# If not everyone on the team is using vagrant
+  config.action_mailer.delivery_method = ENV['USER'] == 'vagrant' ? :letter_opener_web : :letter_opener
   # Use this on the cloud IDE.
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.default_url_options = { host: host }
   # Use this if developing on localhost.
   # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 

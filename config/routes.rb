@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+   mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  # get 'password_resets/new'
+  # get 'password_resets/edit'
   root 'static_pages#home'
 
   get    '/signup',   to: 'users#new'
