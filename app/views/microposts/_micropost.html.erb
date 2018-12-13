@@ -32,5 +32,5 @@
 </li>
 
 <section class="footer-posts">
-  <%= sanitize micropost.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-pill badge-primary'}.join(' ') %>
+  <%= sanitize micropost.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-info'}.join(' ') %>
 </section>
