@@ -9,12 +9,13 @@ Rails.application.routes.draw do
   post   '/login',    to: 'sessions#create'
   delete '/logout',   to: 'sessions#destroy'
   patch 'toggle_banned/:id', to: 'users#toggle_banned', as: 'toggle_banned'
-  get 'show_two/:id', to:'users#show_two'
+  # post 'repost/:id', to: 'micropost#repost', as: 'repost'
 
   resources :users
 
   resources :microposts do
     resources :likes
+    resources :comments
   end
 
   # resources :account_activations, only: [:edit]
@@ -25,4 +26,5 @@ Rails.application.routes.draw do
   resources :pictures, only: [:create, :destroy]
 
   resources :tags, only: [:show]
+  resources :categories
 end

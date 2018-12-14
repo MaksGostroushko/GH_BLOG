@@ -1,8 +1,16 @@
-<% provide(:title, 'All users') %>
 <h1>All users</h1>
 
 <ul class="users">
-  <%= render @users %>
+    <%= render @users %>
 </ul>
 
-<%= will_paginate %>
+<div id="without_button">
+<%= will_paginate @users %>
+</div>
+
+
+<% if @users.next_page %>
+<div id="load_more_users">
+    <%= button_to 'More users', {action: "index", new_req: true }, method: :get, remote: true, class: "btn btn-primary btn-large" %>
+</div>
+<% end %>

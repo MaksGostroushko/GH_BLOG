@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
-  before_action :set_params, only: [:show, :edit, :update]
+  before_action :set_params, only: [:show, :edit, :update, :destroy]
 
   def index
     @microposts = Micropost.all.order(created_at: :desc)
@@ -34,6 +34,18 @@ class MicropostsController < ApplicationController
       render 'edit'
     end
   end
+
+  # def repost
+  #   orig_post = Micropost.find(params[:id])
+  #   if orig_post
+  #     Micropost.create(user_id: current_user.id,
+  #       content: orig_post.content,
+  #       repost_id: orig_post.id)
+  #     respond_to do |format|
+  #       format.js
+  #     end
+  #   end
+  # end
 
   def destroy
     @micropost.destroy

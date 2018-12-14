@@ -1,0 +1,12 @@
+<div class="col-md-0">
+  <h3 class="comments"><strong>Comments</strong></h3>
+  <%= form_for [@micropost, Comment.new] do |f| %>
+  <%= f.hidden_field :parent_id, value: params[:parent_id] %>
+  <p></p>
+  <%= f.text_area :body, required: true, class: 'form-control btn-form' %>
+<div class="col-sm-12 text-center">
+  <%= f.submit 'Create comment', class: 'btn btn-success btn-comment' %>
+  <hr>
+</div>
+<% end %>
+</div>

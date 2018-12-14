@@ -29,24 +29,6 @@
 
   <p></p>
 
-<div class="col-md-0">
-  <h3 class="comments"><strong>Comments</strong></h3>
-  <%= form_for [@micropost, Comment.new] do |f| %>
-  <%= f.text_field :body, required: true, class: 'form-control' %>
-  <%= f.submit 'Create comment', class: 'btn btn-success' %>
-  <hr>
-<% end %>
+  <%= link_to 'Add a comment', new_micropost_comment_path(@micropost, Comment.new), id: 'reply-comment', class: 'btn btn-secondary', remote: true %>
 
-<% @comments.each do |comment| %>
-
-<div class="show-comment">
-    <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
-    <p class="show_comment"><%= comment.user.name%></p>
-    <p><%= comment.body %></p>
-    <%= link_to "Delete", [@micropost, comment], method: :delete if comment.user == current_user %>
-    </div>
-    <hr>
-
-  <% end %>
-
-</div>
+<%= nested_comments(@micropost.comments.arrange) %>

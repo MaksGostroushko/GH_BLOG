@@ -1,4 +1,6 @@
 <h1><%= @tag.name %></h1>
+<h3 style="text-align: center">We defined <%= pluralize @tag.microposts.count, "post" %> with this tag</h3>
+<%# @tag.microposts.count %>
 
 <% if @tag.microposts.empty? %>
   <h2>Sorry, there are no posts in this tag</h2>

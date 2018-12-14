@@ -1,0 +1,8 @@
+<div class="show-comment">
+    <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
+    <p class="show_comment"><%= comment.user.name%></p>
+    <p><%= comment.body %></p>
+    <%= link_to 'Reply', new_micropost_comment_path(@micropost, Comment.new, parent_id: comment.id), id: "reply-comment#{comment.id}", class: 'btn btn-secondary', remote: true %>
+    <%= link_to "Delete", [@micropost, comment], method: :delete if comment.user == current_user %>
+</div>
+    <hr>

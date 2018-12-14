@@ -3,8 +3,9 @@ class Micropost < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many:taggings
-  has_many:tags, through: :taggings
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
+  # has_many :reposts, class_name: "Post", foreign_key: ("repost_id"), dependent: :destroy
 
   scope :views, -> { reorder(views_count: :desc) }
   scope :desc, -> { order(created_at: :desc) }

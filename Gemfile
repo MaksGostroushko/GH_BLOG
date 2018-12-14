@@ -16,8 +16,9 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'trix-rails', require: 'trix'
 gem 'letter_opener_web', '~> 1.0'
 gem 'sendgrid-ruby'
-
-
+gem 'ancestry'
+gem 'responders'
+gem 'execjs', '~> 2.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record

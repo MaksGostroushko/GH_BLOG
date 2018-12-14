@@ -7,10 +7,6 @@
         <%= @user.name %>
       </h1>
     </section>
-    <%= form_tag(microposts_path, method: :get, id: 'search-form', class: "navbar-form navbar-left search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
-      <%= submit_tag "Search", class: 'btn btn-info search_button' %>
-    <% end %>
   </aside>
   <div class="col-md-8">
 
