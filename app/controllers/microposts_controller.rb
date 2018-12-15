@@ -35,18 +35,6 @@ class MicropostsController < ApplicationController
     end
   end
 
-  # def repost
-  #   orig_post = Micropost.find(params[:id])
-  #   if orig_post
-  #     Micropost.create(user_id: current_user.id,
-  #       content: orig_post.content,
-  #       repost_id: orig_post.id)
-  #     respond_to do |format|
-  #       format.js
-  #     end
-  #   end
-  # end
-
   def destroy
     @micropost.destroy
     flash[:success] = "Micropost deleted"

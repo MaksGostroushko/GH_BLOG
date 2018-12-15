@@ -1,34 +1,36 @@
-<div class="col-md-12">
+  <div class="col-md-12">
 
-  <div class="">
-    <h3 class="show_title_post"><strong>Title</strong></h3>
-    <div class="h1_show"><%= @micropost.title %></div>
-    <h3 class="show_title_post"><strong>Post</strong></h3>
-    <span class="show_content"><%= sanitize @micropost.content%></span>
+    <div class="">
+      <h3 class="show_title_post"><strong>Title</strong></h3>
+      <div class="h1_show"><%= @micropost.title %></div>
+      <h3 class="show_title_post"><strong>Post</strong></h3>
+      <span class="show_content"><%= sanitize @micropost.content%></span>
+    </div>
+
+    <br>
+
+    <div class="show_title_post">
+      <%= image_tag @micropost.picture.url if @micropost.picture? %>
+      </div>
+
+      <div class="video"><%= get_video_iframe(@micropost.link) %></div>
+      <hr class="hr">
   </div>
 
-  <br>
-
-  <div class="show_title_post">
-  <%= image_tag @micropost.picture.url if @micropost.picture? %>
+  <div class="gravatar">
+    <% if @micropost.user_like(current_user).present?  %>
+      <%= button_to "Unlike", [@micropost, @micropost.user_like(current_user)], method: :delete, data: { disable_with: "please, wait" }, class: 'btn btn-danger like' %>
+    <% else %>
+      <%= button_to "Like", micropost_likes_path(@micropost), data: { disable_with: "please, wait" }, class: 'btn btn-success like' %>
+    <% end %>
+   Likes: <%= @micropost.likes.count %>
+   <hr class="hr">
   </div>
-
-  <div class="video"><%= get_video_iframe(@micropost.link) %></div>
-  <hr class="hr">
-</div>
-
-<div class="gravatar">
-  <% if @micropost.user_like(current_user).present?  %>
-    <%= button_to "Unlike", [@micropost, @micropost.user_like(current_user)], method: :delete, data: { disable_with: "please, wait" }, class: 'btn btn-danger like' %>
-  <% else %>
-    <%= button_to "Like", micropost_likes_path(@micropost), data: { disable_with: "please, wait" }, class: 'btn btn-success like' %>
-  <% end %>
- Likes: <%= @micropost.likes.count %>
- <hr class="hr">
- </div>
 
   <p></p>
-
-  <%= link_to 'Add a comment', new_micropost_comment_path(@micropost, Comment.new), id: 'reply-comment', class: 'btn btn-secondary', remote: true %>
+  <div class="col-sm-12 text-center">
+    <%= link_to 'Add a comment', new_micropost_comment_path(@micropost, Comment.new), id: 'reply-comment', data: { disable_with: 'please, wait'}, class: 'btn btn-primary added-comment', remote: true %>
+    <hr class="hr">
+  </div>
 
 <%= nested_comments(@micropost.comments.arrange) %>
