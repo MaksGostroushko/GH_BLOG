@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :microposts do
       resources :comments #do
       resources :likes
-      end
+      # end
       # resources :likes
     end
 
