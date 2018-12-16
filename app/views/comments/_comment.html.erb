@@ -3,7 +3,7 @@
     <p class="show_comment"><%= comment.user.name%></p>
     <p><%= comment.body %></p>
 
-    <!-- <b>Likes: <%# comment.likes_count || 0 %></b> -->
+    <!-- <b>Likes: <%= comment.likes_count || 0 %></b> -->
 
     <%# if comment.user_like(current_user).present? %>
       <%# link_to "Unlike", micropost_comment_like_path(@micropost, comment, id: comment.user_like(current_user).id), method: :delete, class: 'like'  %>

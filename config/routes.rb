@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   resources :users
 
   resources :microposts do
-      resources :comments do
-        resources :likes
-      end
+      resources :comments #do
       resources :likes
+      end
+      # resources :likes
     end
 
   # resources :account_activations, only: [:edit]

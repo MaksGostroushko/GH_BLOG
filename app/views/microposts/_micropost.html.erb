@@ -27,7 +27,10 @@
     Likes:<%= micropost.likes_count || 0 %>
   </span>
 </li>
+<div class="row">
 
-<section class="footer-posts">
-  <%= sanitize micropost.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-info'}.join(' ') %>
-</section>
+  <section class="footer-posts">
+    <%= sanitize micropost.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-info'}.join(' ') %>
+  </section>
+
+</div>
