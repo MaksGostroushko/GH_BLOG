@@ -398,3 +398,28 @@
   .added-comment {
     text-align: center;
   }
+
+  .advertising {
+    margin-top: .9em;
+    height:49em;
+    border: 5px dotted black;
+  }
+
+  .ad-1{
+    margin-top: 2.5em;
+    font-size: 45px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .ad-2, .ad-3, .ad-4, .ad-5{
+    margin-top: .8em;
+    font-size: 45px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .arrow-up {
+    max-width: 35px;
+    max-height: 30px;
+  }

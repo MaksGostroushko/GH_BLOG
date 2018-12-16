@@ -6,15 +6,30 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <div class="advertising">
+        <span class="ad-1">FREE</span>
+        <span class="ad-2">PLACE</span>
+        <span class="ad-3">FOR</span>
+        <span class="ad-4">YOUR</span>
+        <span class="ad-5">ADVERTISING</span>
+      </div>
     </section>
   </aside>
   <div class="col-md-8">
 
     Sorting by:
-    <%= link_to "new", user_path(params[:id], sorting: 'desc'), class: 'btn btn-info btn-sm' %> |
-    <%= link_to "old", user_path(params[:id], sorting: 'asc'), class: 'btn btn-info btn-sm' %> |
-    <%= link_to "views", user_path(params[:id], sorting: 'views'), class: 'btn btn-info btn-sm'%> |
-    <%= link_to "likes", user_path(params[:id], sorting: 'votes'), class: 'btn btn-info btn-sm' %>
+
+    Created
+    <%= link_to image_tag("arrow_up.png", class: 'arrow-up'), user_path(params[:id], sorting: 'desc') %>
+    <%= link_to image_tag("arrow_down.png", class: 'arrow-up'), user_path(params[:id], sorting: 'asc') %> |
+
+    Views
+    <%= link_to image_tag("arrow_up.png", class: 'arrow-up'), user_path(params[:id], sorting: 'views')%>
+    <%= link_to image_tag("arrow_down.png", class: 'arrow-up'), user_path(params[:id], sorting: 'down_views')%> |
+
+    Likes
+    <%= link_to image_tag("arrow_up.png", class: 'arrow-up'), user_path(params[:id], sorting: 'votes') %>
+    <%= link_to image_tag("arrow_down.png", class: 'arrow-up'), user_path(params[:id], sorting: 'down_votes') %>
 
     <h3>Posts (<%= @user.microposts.published.count %>)</h3>
     <% if @user.microposts.any? %>
