@@ -1,8 +1,10 @@
 class Comment < ApplicationRecord
+  has_ancestry
+
   belongs_to :user
   belongs_to :micropost
 
-  has_ancestry
+  has_many :likes, dependent: :destroy
 
-  validates :body, presence: true, length: { maximum: 150 }
+  validates :body, presence: true, length: { maximum: 300 }
 end

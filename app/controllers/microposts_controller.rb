@@ -4,8 +4,11 @@ class MicropostsController < ApplicationController
   before_action :set_params, only: [:show, :edit, :update, :destroy]
 
   def index
-    @microposts = Micropost.all.order(created_at: :desc)
-    @microposts = @microposts.search(params[:search]) if params[:search]
+    if params[:search]
+      @microposts = Micropost.search(params[:search]).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    else
+      @microposts = Micropost.all.order(created_at: :desc)
+    end
   end
 
   def create

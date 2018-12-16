@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-   mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  # get 'password_resets/new'
-  # get 'password_resets/edit'
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+
   root 'static_pages#home'
 
   get    '/signup',   to: 'users#new'
@@ -9,14 +8,15 @@ Rails.application.routes.draw do
   post   '/login',    to: 'sessions#create'
   delete '/logout',   to: 'sessions#destroy'
   patch 'toggle_banned/:id', to: 'users#toggle_banned', as: 'toggle_banned'
-  # post 'repost/:id', to: 'micropost#repost', as: 'repost'
 
   resources :users
 
   resources :microposts do
-    resources :likes
-    resources :comments
-  end
+      resources :comments do
+        resources :likes
+      end
+      resources :likes
+    end
 
   # resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
