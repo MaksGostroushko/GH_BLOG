@@ -5,11 +5,11 @@
 
     <!-- <b>Likes: <%# comment.likes_count || 0 %></b> -->
 
-    <% if comment.user_like(current_user).present? %>
-      <%= link_to "Unlike", micropost_comment_like_path(@micropost, comment, id: comment.user_like(current_user).id), method: :delete, class: 'like'  %>
-    <% else %>
-      <%= link_to 'Like', micropost_comment_likes_path(@micropost, comment), method: :post, class: 'like' %>
-    <% end %>
+    <%# if comment.user_like(current_user).present? %>
+      <%# link_to "Unlike", micropost_comment_like_path(@micropost, comment, id: comment.user_like(current_user).id), method: :delete, class: 'like'  %>
+    <%# else %>
+      <%# link_to 'Like', micropost_comment_likes_path(@micropost, comment), method: :post, class: 'like' %>
+    <%# end %>
 
     <%= link_to 'Reply', new_micropost_comment_path(@micropost, Comment.new, parent_id: comment.id), id: "reply-comment#{comment.id}", class: 'btn btn-info btn-sm', remote: true %>
     <%= link_to "Delete", [@micropost, comment], class: 'btn btn-danger btn-sm', data: { confirm: "are you sure?" }, method: :delete if comment.user == current_user %>
