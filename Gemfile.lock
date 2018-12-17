@@ -461,7 +461,6 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   curl
-  execjs (~> 2.7)
   faker (= 1.7.3)
   fog (= 1.42)
   jbuilder (~> 2.5)

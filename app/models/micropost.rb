@@ -20,10 +20,6 @@ class Micropost < ApplicationRecord
 
   mount_uploader :picture, PictureUploader
 
-  def user_like(user)
-    likes.find_by(user: user)
-  end
-
   def all_tags
   self.tags.map(&:name).join(', ')
   end

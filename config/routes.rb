@@ -12,19 +12,19 @@ Rails.application.routes.draw do
   resources :users
 
   resources :microposts do
-      resources :comments #do
+    resources :comments do
       resources :likes
-      # end
-      # resources :likes
     end
+    resources :likes
+  end
 
-  # resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+
   resources :microposts, only: [:create, :destroy, :show, :update] do
     resources :comments, only: [:create, :destroy]
   end
-  resources :pictures, only: [:create, :destroy]
 
+  resources :pictures, only: [:create, :destroy]
   resources :tags, only: [:show]
   resources :categories
 end
