@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   patch 'toggle_banned/:id', to: 'users#toggle_banned', as: 'toggle_banned'
 
   resources :users
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :pictures, only: [:create, :destroy]
+  resources :tags, only: [:show]
+  resources :categories
 
   resources :microposts do
     resources :comments do
@@ -18,13 +22,8 @@ Rails.application.routes.draw do
     resources :likes
   end
 
-  resources :password_resets,     only: [:new, :create, :edit, :update]
-
   resources :microposts, only: [:create, :destroy, :show, :update] do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :pictures, only: [:create, :destroy]
-  resources :tags, only: [:show]
-  resources :categories
 end
