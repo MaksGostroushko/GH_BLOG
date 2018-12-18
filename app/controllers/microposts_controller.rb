@@ -25,6 +25,8 @@ class MicropostsController < ApplicationController
   def show
     @comments = @micropost.comments
     @micropost.increment!(:views_count)
+    # @post_comments = @post.comments.order(created_at: :asc).paginate(page: params[:page], per_page: 10)
+     @micropost_comments = @micropost.comments.paginate(page: params[:page], per_page: 10).select { |comment| comment.parent_id.nil? }
   end
 
   def edit; end

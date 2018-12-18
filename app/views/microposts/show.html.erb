@@ -33,4 +33,9 @@
     <hr class="hr">
   </div>
 
-<%= nested_comments(@micropost.comments.arrange) %>
+  <div id="comments_block">
+     <%= render @micropost_comments %>
+   </div>
+   <div id="comment_nav">
+     <%= render 'comments/show_more_btn' %>
+   </div>

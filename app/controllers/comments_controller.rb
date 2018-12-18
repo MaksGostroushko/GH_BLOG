@@ -7,6 +7,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(parent_id: params[:parent_id])
   end
 
+  def index
+    @micropost = Micropost.find(params[:micropost_id])
+    @comments = @micropost.comments.paginate(page: params[:page], per_page: 10).select { |comment| comment.parent_id.nil? }
+  end
+
   def create
     @comment = @micropost.comments.create(comment_params.merge(user: current_user))
     if @comment.save
