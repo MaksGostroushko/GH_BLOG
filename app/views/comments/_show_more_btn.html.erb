@@ -1,4 +1,4 @@
-<% if params[:page].to_i < @micropost.comments.count %>
+<% if params[:page].to_i < @micropost.comments.count / 8 %>
   <% page = params[:page] ? params[:page].to_i+1 : 2 %>
   <%= link_to 'Show more', micropost_comments_path(@micropost, page: page), class: 'btn btn-primary', remote: true %>
 <% else %>
