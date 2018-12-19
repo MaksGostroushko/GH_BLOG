@@ -3,12 +3,17 @@
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
     <% if user.banned? %>
-    | <%= link_to 'unbanned', toggle_banned_path(user, { banned: false }), method: :patch  %>
+    | <%= link_to 'unbanned', toggle_banned_path(user, { banned: false }), method: :patch, remote: true  %>
     <% else %>
-    | <%= link_to 'banned', toggle_banned_path(user, { banned: true }), method: :patch %>
+    | <%= link_to 'banned', toggle_banned_path(user, { banned: true }), method: :patch, remote: true %>
 
     <% end %>
-    | <%= link_to "delete", user, method: :delete,
+    | <%= link_to "delete", user, method: :delete, remote: true,
     data: { confirm: "Are you sure?" } %>
   <% end %>
 </li>
+<script type="text/javascript">
+  setTimeout(function(){
+    $('.alert-success').fadeOut();
+  }, 1200);
+</script>

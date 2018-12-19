@@ -7,7 +7,7 @@ class MicropostsController < ApplicationController
     if params[:search]
       @microposts = Micropost.search(params[:search]).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     else
-      @microposts = Micropost.all.order(created_at: :desc)
+      @microposts = Micropost.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     end
   end
 

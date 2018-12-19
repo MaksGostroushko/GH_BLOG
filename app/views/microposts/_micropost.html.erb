@@ -14,12 +14,14 @@
     <% if current_user?(micropost.user) %>
       <%= link_to "edit", edit_micropost_path(micropost), class: 'btn btn-warning btn-sm'  %>
     <% end %>
+
     <% if current_user?(micropost.user) %>
-      <%= link_to "delete", micropost, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm'  %>
-    <%= link_to "published", micropost_path(micropost,{ micropost: { published: true }}), data: { confirm: 'Are you sure' }, class:'btn btn-primary btn-sm', method: :patch unless micropost.published %>
-    <br>
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+      <%= link_to "delete", micropost, method: :delete, data: { confirm: "Are you sure?" }, remote: true, class: 'btn btn-danger btn-sm'  %>
+      <%= link_to "published", micropost_path(micropost,{ micropost: { published: true }}), data: { confirm: 'Are you sure' }, remote: true, class:'btn btn-primary btn-sm', method: :patch unless micropost.published %>
+      <br>
+      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
     <% end %>
+
     <p></p>
     <%= image_tag('eye2.png', alt: 'views', class: "views-image")%>
     <%= micropost.views_count%> |
@@ -27,10 +29,9 @@
     Likes:<%= micropost.likes_count || 0 %>
   </span>
 </li>
-<div class="row">
 
+<div class="row">
   <section class="footer-posts">
     <%= sanitize micropost.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-info'}.join(' ') %>
   </section>
-
 </div>
