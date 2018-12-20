@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   get    '/signup',   to: 'users#new'
   get    '/login',    to: 'sessions#new'
+  get    '/moon',    to: 'static_pages#moon'
+  get    '/coffee',    to: 'static_pages#coffee'
+  get    '/according',    to: 'static_pages#according' 
   post   '/login',    to: 'sessions#create'
   delete '/logout',   to: 'sessions#destroy'
   patch 'toggle_banned/:id', to: 'users#toggle_banned', as: 'toggle_banned'

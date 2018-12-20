@@ -14,5 +14,13 @@
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>
+
+    <% if cookies[:views].to_i == 10 %>
+      <script type="text/javascript">
+        let myWindow = window.open("", "", "width=400,height=150");
+        myWindow.document.write("<p>Learn Ruby on Rails with GeekHub! :)</p>");
+      </script>
+        <% cookies.delete(:views) %>
+    <% end %>
   </body>
 </html>

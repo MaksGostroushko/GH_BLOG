@@ -2,6 +2,7 @@ class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
   before_action :set_params, only: [:show, :edit, :update, :destroy]
+  before_action :cookies_views
 
   def index
     if params[:search]
@@ -63,5 +64,9 @@ class MicropostsController < ApplicationController
 
     def post_params
       params.require(:micropost).permit(:body, :image, :all_tags)
+    end
+
+    def cookies_views
+      cookies[:views] = cookies[:views]? cookies[:views].to_i + 1 : 1
     end
 end

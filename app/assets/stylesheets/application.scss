@@ -423,3 +423,278 @@
     max-width: 35px;
     max-height: 30px;
   }
+
+  .ass {
+    text-align: center;
+  }
+
+  /* moon */
+  .moon{
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	background-color: #e5a4cb;
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+  }
+  @-webkit-keyframes orbit{
+  	from{
+  		-webkit-transform: rotateX(0) rotateY(359deg);
+  	}
+  	to{
+  		-webkit-transform: rotateX(359deg) rotateY(-359deg);
+  	}
+  }
+  @keyframes orbit{
+  	from{
+  		-webkit-transform: rotateX(0) rotateY(359deg);
+  		transform: rotateX(0) rotateY(359deg);
+  	}
+  	to{
+  		-webkit-transform: rotateX(359deg) rotateY(-359deg);
+  		transform: rotateX(359deg) rotateY(-359deg);
+  	}
+  }
+  .moon:before, .moon:after{
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	margin: auto;
+  	-webkit-transform-origin: center center -133.33333px;
+  	transform-origin: center center -133.33333px;
+  	-webkit-animation: orbit 3s linear infinite;
+  	animation: orbit 3s linear infinite;
+  	backface-visibility: hidden;
+  	-webkit-backface-visibility: hidden;
+  	z-index: 1;
+  	content: '';
+  	width: 40px;
+  	height: 40px;
+  	background-color: #bbb;
+  	border-radius: 50px;
+  }
+  .moon:before{
+  	-webkit-transform-origin: center center -100px;
+  	transform-origin: center center -100px;
+  	width: 30px;
+  	height: 30px;
+  	background-color: #555;
+  	opacity: 0.5;
+  }
+  .moon.behind:after{
+  	-webkit-backface-visibility: visible;
+  	backface-visibility: visible;
+  }
+
+  .magic-html {
+	height: 100%;
+  }
+
+  .magic-body {
+	background-color: #FFE8D4;
+	height: 100%;
+  }
+
+  /* coffee */
+  .coffee-body{
+	background: #D7C0D0;
+  }
+
+/* the coffee mug and the coffee will be created mostly using box shadows */
+  .coffee-mug{
+  	background: #3F2616;
+  	position: relative;
+  	margin: 150px auto;
+  	width: 150px;
+  	height: 150px;
+  	border-radius: 50%;
+	/* the following box-shadow values are going to create the coffee mug, a coffee ring, and some coffee splatters (our mug is a little leaky) */
+	box-shadow: 0 0 0 10px #442918,
+							 0 0 0 25px #3C2415,
+							 0 0 0 42px #E4E6B2,
+							 0 0 0 65px #EFF0D1,
+							 0 120px 0 -25px #3C2415,
+							 100px 70px 0 -25px #3C2415,
+							 80px 140px 0 -10px #3C2415,
+							 0px 210px 0 -55px #3C2415,
+							 20px 250px 0 -65px #3C2415;
+             }
+
+  /* cool right? except the mug needs a handle */
+  .coffee-mug::before{
+  	content: '';
+  	position: absolute;
+  	background: #EFF0D1;
+  	height: 80px;
+  	width: 60px;
+  	top: -85px;
+  	right: -75px;
+  	border-radius: 5px;
+  	box-shadow: inset 0px 50px 0 0px #EFF0D1;
+  	/* transform lets us rotate the handle on an angle */
+  	transform: rotate(45deg);
+  }
+
+  /* that coffee could look a little more realistic. let's add a simple ripple effect */
+  .coffee-mug::after{
+  	content: '';
+  	width: 20px;
+  	height: 20px;
+  	border-radius: 50%;
+  	position: absolute;
+  	border: 3px solid #77665C;
+  	left: 0;
+  	right: 0;
+  	margin-left: auto;
+  	margin-right: auto;
+  	top: 0;
+  	bottom: 0;
+  	margin-top: auto;
+  	margin-bottom: auto;
+  	opacity: 0.2;
+  	/* a little bit of animation */
+  	animation: rings 3s ease-out infinite;
+  }
+
+  @keyframes rings{
+  	to{
+  		width: 150px;
+  		height: 150px;
+  		opacity: 0;
+  	}
+  }
+
+
+  @import url(https://fonts.googleapis.com/css?family=Lato);
+  @import url(http://fonts.googleapis.com/css?family=Montserrat:700);
+
+  .h1-according{
+  	text-align: center;
+  	font-family: 'Montserrat', sans-serif;
+  	color: #333;
+  }
+  .accordion{
+  	width: 100%;
+  	max-width: 1080px;
+  	height: 250px;
+  	overflow: hidden;
+  	margin: 50px auto;
+  }
+  .accordion ul{
+  	width: 100%;
+  	display: table;
+  	table-layout: fixed;
+  	margin: 0;
+  	padding: 0;
+  }
+  .accordion ul li{
+  	display: table-cell;
+  	vertical-align: bottom;
+  	position: relative;
+  	width: 16.666%;
+  	height: 250px;
+  	background-repeat: no-repeat;
+  	background-position: center center;
+  	transition: all 500ms ease;
+  }
+  .accordion ul li div{
+  	display: block;
+  	overflow: hidden;
+  	width: 100%;
+  }
+  .accordion ul li div a{
+  	display: block;
+  	height: 250px;
+  	width: 100%;
+  	position: relative;
+  	z-index: 3;
+  	vertical-align: bottom;
+  	padding: 15px 20px;
+  	box-sizing: border-box;
+  	color: #fff;
+  	text-decoration: none;
+  	font-family: 'Lato', sans-serif;
+  	transition: all 200ms ease;
+  }
+  .accordion ul li div a *{
+  	opacity: 0;
+  	margin: 0;
+  	width: 100%;
+  	text-overflow: ellipsis;
+  	position: relative;
+  	z-index: 5;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	-webkit-transform: translateX(-20px);
+  	transform: translateX(-20px);
+  	-webkit-transition: all 400ms ease;
+  	transition: all 400ms ease;
+  }
+  .accordion ul li div a h2{
+  	font-family: 'Montserrat', sans-serif;
+  	text-overflow: clip;
+  	font-size: 24px;
+  	text-transform: uppercase;
+  	margin-bottom: 2px;
+  	top: 160px;
+  }
+  .accordion ul li div a p{
+  	top: 160px;
+  	font-size: 13.5px;
+  }
+  .accordion ul li:nth-child(1){
+  	background-image: url("http://lorempixel.com/650/250/");
+  }
+  .accordion ul li:nth-child(2){
+  	background-image: url("http://lorempixel.com/660/250/")
+  }
+  .accordion ul li:nth-child(3){
+  	background-image: url("http://lorempixel.com/675/250/");
+  }
+  .accordion ul li:nth-child(4){
+  	background-image: url("http://lorempixel.com/680/250/");
+  }
+  .accordion ul li:nth-child(5){
+  	background-image: url("http://lorempixel.com/690/250/");
+  }
+  .accordion ul li:nth-child(6){
+  	background-image: url("http://lorempixel.com/695/250/");
+  }
+  .accordion ul:hover li{
+  	width: 8%;
+  }
+  .accordion ul:hover li:hover{
+  	width: 60%;
+  }
+  .accordion ul:hover li:hover a{
+  	background: rgba(0, 0, 0, 0.4);
+  }
+  .accordion ul:hover li:hover a *{
+  	opacity: 1;
+  	-webkit-transform: translateX(0);
+  	transform: translateX(0);
+  }
+  @media screen and (max-width: 600px){
+  	.body-according{
+  		margin: 0;
+  	}
+  	.accordion{
+  		height: auto;
+  	}
+  	.accordion ul li, .accordion ul li:hover, .accordion ul:hover li, .accordion ul:hover li:hover{
+  		position: relative;
+  		display: table;
+  		table-layout: fixed;
+  		width: 100%;
+  		-webkit-transition: none;
+  		transition: none;
+  	}
+  }
