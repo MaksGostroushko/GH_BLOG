@@ -18,8 +18,8 @@ gem 'letter_opener_web', '~> 1.0'
 gem 'sendgrid-ruby'
 gem 'ancestry'
 gem 'responders'
-gem 'webpacker', '~> 3.5'
-gem 'nodejs-rails', '~> 0.0.1'
+# gem 'webpacker', '~> 3.5'
+# gem 'nodejs-rails', '~> 0.0.1'
 #
 # %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
 #   gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
