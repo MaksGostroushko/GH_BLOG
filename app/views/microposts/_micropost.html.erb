@@ -17,7 +17,7 @@
 
     <% if current_user?(micropost.user) %>
       <%= link_to "delete", micropost, method: :delete, data: { confirm: "Are you sure?" }, remote: true, class: 'btn btn-danger btn-sm'  %>
-      <%= link_to "published", micropost_path(micropost,{ micropost: { published: true }}), data: { confirm: 'Are you sure' }, remote: true, class:'btn btn-primary btn-sm', method: :patch unless micropost.published %>
+      <%= link_to "published", micropost_path(micropost,{ micropost: { published: true }}), data: { confirm: 'Are you sure?' }, remote: true, class:'btn btn-primary btn-sm', method: :patch unless micropost.published %>
       <br>
       Posted <%= time_ago_in_words(micropost.created_at) %> ago.
     <% end %>
