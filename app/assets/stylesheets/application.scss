@@ -574,7 +574,7 @@
 
 
   @import url(https://fonts.googleapis.com/css?family=Lato);
-  @import url(http://fonts.googleapis.com/css?family=Montserrat:700);
+  @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
 
   .h1-according{
   	text-align: center;
@@ -651,22 +651,22 @@
   	font-size: 13.5px;
   }
   .accordion ul li:nth-child(1){
-  	background-image: url("http://lorempixel.com/650/250/");
+  	background-image: url("https://lorempixel.com/650/250/");
   }
   .accordion ul li:nth-child(2){
-  	background-image: url("http://lorempixel.com/660/250/")
+  	background-image: url("https://lorempixel.com/660/250/")
   }
   .accordion ul li:nth-child(3){
-  	background-image: url("http://lorempixel.com/675/250/");
+  	background-image: url("https://lorempixel.com/675/250/");
   }
   .accordion ul li:nth-child(4){
-  	background-image: url("http://lorempixel.com/680/250/");
+  	background-image: url("https://lorempixel.com/680/250/");
   }
   .accordion ul li:nth-child(5){
-  	background-image: url("http://lorempixel.com/690/250/");
+  	background-image: url("https://lorempixel.com/690/250/");
   }
   .accordion ul li:nth-child(6){
-  	background-image: url("http://lorempixel.com/695/250/");
+  	background-image: url("https://lorempixel.com/695/250/");
   }
   .accordion ul:hover li{
   	width: 8%;
@@ -697,4 +697,65 @@
   		-webkit-transition: none;
   		transition: none;
   	}
+  }
+
+  * {margin: 0; padding: 0;}
+
+  #logo {position: relative;}
+
+  .horse {
+  	width: 369px; height: 54px;
+  	background: url(http://www.google.co.in/logos/2012/muybridge12-hp-f.jpg);
+  }
+
+  .frame {position: absolute; left: 0; top: 0; z-index: 1;}
+
+  /*Clicking the label will select the checkbox which will be used to
+  trigger the animation of the horses*/
+
+  #play_button:checked ~ .horse {
+  	-webkit-animation: horse-ride 0.5s steps(12, end) infinite;
+  	-webkit-animation-delay: 2.5s;
+  	-moz-animation: horse-ride 0.5s steps(12, end) infinite;
+  	-moz-animation-delay: 2.5s;
+  	/*Lets add a pre-anim which will start slowly and merge into the fast animation*/
+  	background-position: -2412px 0;
+  	-webkit-transition: all 2.5s cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  	-moz-transition: all 2.5s cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  }
+
+  /*Hide the play image*/
+  #play_button:checked ~ #play_image img{
+  	left: -68px;
+  	-webkit-transition: all 0.5s ease-in;
+  	-moz-transition: all 0.5s ease-in;
+  }
+
+  /*804px is the width of the image with 12 horse frames
+  steps are used in the animation to have the best animation effect
+  it will position the horse frames accurately in the boxes instead of
+  tweening it px by px all the way through*/
+  @-webkit-keyframes horse-ride {
+  	0% {background-position: 0 0;}
+  	100% {background-position: -704px 0;}
+  }
+  @-moz-keyframes horse-ride {
+  	0% {background-position: 0 0;}
+  	100% {background-position: -704px 0;}
+  }
+
+  #play_button {display: none;}
+  #play_label {
+  	width: 67px; height: 54px;
+  	display: block;
+  	position: absolute; left: 201px; top: 54px; z-index: 2;
+  }
+  #play_image {position: absolute; left: 201px; top: 54px; z-index: 0;
+  	overflow: hidden; width: 68px; height: 55px;
+  }
+  #play_image img {position: absolute; left: 0; top: 0;}
+
+  #image-horse {
+    width: 369px;
+    height: 174px;
   }
