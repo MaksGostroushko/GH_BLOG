@@ -13,6 +13,6 @@ module SampleApp
 
     # Include the authenticity token in remote forms.
     config.action_view.embed_authenticity_token_in_remote_forms = true
-    # config.secret_key_base = "421aa1287e015d358450fde71e6d325f6b9e34055b5c78f3e2c4b08c893cd910e0e8d1ffdbf5026b0699ec4e64e03ad9b6c795fe07f2ba644bfa0f9142c8bafd"
+    config.secret_key_base = "421aa1287e015d358450fde71e6d325f6b9e34055b5c78f3e2c4b08c893cd910e0e8d1ffdbf5026b0699ec4e64e03ad9b6c795fe07f2ba644bfa0f9142c8bafd"
   end
 end
