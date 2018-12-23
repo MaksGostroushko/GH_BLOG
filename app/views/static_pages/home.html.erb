@@ -14,10 +14,4 @@
   </div>
 <% else %>
     <%= link_to image_tag("signup_new.gif", class: "sign"), signup_path %>
-
-    <script type="text/javascript">
-      setTimeout(function(){
-        $('.alert-info').fadeOut();
-      }, 1200);
-    </script>
 <% end %>
