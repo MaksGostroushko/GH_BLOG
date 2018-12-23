@@ -18,7 +18,8 @@ gem 'letter_opener_web', '~> 1.0'
 gem 'sendgrid-ruby'
 gem 'ancestry'
 gem 'responders'
-
+gem 'factory_bot'
+gem 'webpacker', '~> 3.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

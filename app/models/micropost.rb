@@ -34,6 +34,10 @@ class Micropost < ApplicationRecord
     where(("title ILIKE ?"), "%#{search}%")
   end
 
+  def to_param
+    "#{id}-#{title}"
+  end
+
   private
     # Validates the size of an uploaded picture.
     def picture_size
