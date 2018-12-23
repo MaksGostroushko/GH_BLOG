@@ -1,18 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Micropost, type: :model do
-  # before(:all).do
-  #   @user = User.new{name: "Max", email: "maxnew@gmail.com", password: "123456"}
-  # end
-  #
-  # context "validations" do
-  #  it "should have valid factory" do
-  #      expect(@user).to be_valid
-  #  end
+  let(:user) { create(:user)}
+  # let(:micropost) { create(:micropost, user: user)}
 
   it "post's content should be present" do
-    @user = User.new(name: "Max", email: "maxnew@gmail.com", password: "123456")
-    @micropost = @user.microposts.build(content: "", title: "Title")
+    # debugger
+    # @user = User.new(name: "Max", email: "maxnew@gmail.com", password: "123456")
+    @micropost = user.microposts.build(content: "", title: "Title")
     expect(@micropost.valid?).to be false
   end
 

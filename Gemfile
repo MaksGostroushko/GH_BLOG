@@ -18,7 +18,6 @@ gem 'letter_opener_web', '~> 1.0'
 gem 'sendgrid-ruby'
 gem 'ancestry'
 gem 'responders'
-gem 'factory_bot'
 gem 'webpacker', '~> 3.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -78,6 +77,9 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 # For windows

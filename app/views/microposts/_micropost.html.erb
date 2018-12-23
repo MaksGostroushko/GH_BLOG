@@ -25,8 +25,8 @@
     <p></p>
     <%= image_tag('eye2.png', alt: 'views', class: "views-image")%>
     <%= micropost.views_count%> |
-    Comments: <%= micropost.comments.count %> |
-    Likes:<%= micropost.likes_count || 0 %>
+    <i class="fa fa-comment"></i> <%= micropost.comments.count %> |
+    <i class="fa fa-heart"></i>  <%= micropost.likes_count || 0 %>
   </span>
 </li>
 

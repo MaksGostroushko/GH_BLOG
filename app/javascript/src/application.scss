@@ -1,3 +1,21 @@
-// body {
-//   background-color: red;
-// }
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
+// styles for user's image
+.gravatar {
+  text-align: center;
+}
+.gravatar_edit {
+  margin-top: 15px;
+}
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
